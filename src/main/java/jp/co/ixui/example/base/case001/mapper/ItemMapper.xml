@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ixui.example.base.case001.mapper.ItemMapper">
+
+	<select id="fetchAll" resultType="Item">
+		SELECT
+		  id,
+		  name
+		FROM
+		  item
+	</select>
+
+	<select id="fetchById" resultType="Item">
+		SELECT
+		  id,
+		  name
+		FROM
+		  item
+		WHERE
+		  id = #{id};
+	</select>
+
+	<insert id="create" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO item (
+		  name
+		) VALUES (
+		  #{name}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE item SET 
+		  name = #{name} 
+		WHERE 
+		  id = #{id}
+	</update>
+
+	<delete id="destroy">
+		DELETE FROM item 
+		WHERE 
+		  id = #{id}
+	</delete>
+	
+</mapper>
